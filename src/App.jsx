@@ -15,8 +15,6 @@ function App() {
 
   const updateHabit = (id, habit) => {
     setHabits((prev) => prev.map((prevHabit) => (prevHabit.id === id ? habit : prevHabit )))
-
-    
   }
 
   const deleteHabit = (id) => {

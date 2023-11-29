@@ -26,8 +26,8 @@ function HabitForm() {
 
         if (!habitName) return
 
-        addHabit({ name: habitName, completed: false,cardColour: color})
-        setHabitName("")
+        addHabit({ name: habitName, completed: false,cardColour: color,completedDates: new Set(),streak: 0,startDate: new Date()})
+        setHabitName("");
     }
 
     return (

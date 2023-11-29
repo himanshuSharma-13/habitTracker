@@ -5,9 +5,11 @@ export const HabitContext = createContext({
     {
       id: 1,
       name: "Todo msg",
-      firstDate: new Date(),
-      lastDate: new Date(),
+      completed: false,
       streak: 0,
+      cardColour: "",
+      completedDates: new Set(),
+      startDate: new Date(),
     },
   ],
   addHabit: (habit) => {},
