@@ -23,18 +23,21 @@ function TodaysHabits() {
 
   return (
     <div className="m-4">
-      <h1>TodaysHabits</h1>
+      <h1 className="text-2xl font-semibold mb-4">Today's Habits</h1>
       <ul>
         {habits.map((habit) => (
-          <li key={habit.id}>
+          <li key={habit.id} className="flex items-center mb-2">
             <input
               type="checkbox"
               name={habit.name}
               id={habit.id}
               checked={habit.completedDates.has(new Date().toISOString().split('T')[0])}
               onChange={() => handleCheckboxChange(habit.id)}
+              className="mr-2"
             />
-            {habit.name}
+            <span className={habit.completedDates.has(new Date().toISOString().split('T')[0]) ? 'line-through text-gray-500' : 'text-black'}>
+              {habit.name}
+            </span>
           </li>
         ))}
       </ul>

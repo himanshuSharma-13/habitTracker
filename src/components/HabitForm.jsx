@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHabit } from "../contexts/HabitContext";
 import { SketchPicker } from "react-color";
+import { FaBrush } from "react-icons/fa6";
 
 function HabitForm() {
 
@@ -28,6 +29,7 @@ function HabitForm() {
 
         addHabit({ name: habitName, completed: false, cardColour: color, completedDates: new Set(), streak: 0, startDate: new Date() })
         setHabitName("");
+        setHidden(false);
     }
 
     return (
@@ -39,7 +41,7 @@ function HabitForm() {
                 value={habitName}
                 onChange={(e) => setHabitName(e.target.value)}
             />
-            <div className="mr-1" style={{ background: color }}>
+            <div className="m-2 flex items-center justify-center">
                 {hidden && (
                     <SketchPicker
                         styles={pickerStyle}
@@ -48,7 +50,7 @@ function HabitForm() {
                     />
                 )}
                 <button onClick={() => setHidden(!hidden)}>
-                    {hidden ? "Color" : "Color"}
+                    <FaBrush />
                 </button>
             </div>
             <button onClick={add} className="rounded-r-lg px-3 py-1 bg-green-600 text-white shrink-0">

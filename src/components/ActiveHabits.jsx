@@ -18,7 +18,7 @@ function ActiveHabits() {
 
   return (
     <div className="p-4">
-      <h1 className="m-2">Active Habits</h1>
+      <h1 className="text-2xl font-semibold mb-4">Active Habits</h1>
       {habits.map((habitItem, index) => {
         const completedPercentage = (habitItem.completedDates.size / numberOfDays) * 100;
 
@@ -28,18 +28,22 @@ function ActiveHabits() {
             className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-4"
             style={{ background: `linear-gradient(to right, ${habitItem.cardColour} ${completedPercentage}%, white ${completedPercentage}%)` }}
           >
-            <p style={{ display: "inline", marginRight: "100px" }}>{completedPercentage.toFixed(2)}%</p>
+            <p className="inline mr-20">{completedPercentage.toFixed(2)}%</p>
             {dateArray.map((item, i) => (
-              <span key={i} style={{ display: "inline", marginRight: "10px" }}>
-                {habitItem.completedDates.has(item) ? <FaCheck style={{ display: "inline" }} /> : <FaRegCircle style={{ display: "inline" }} />}
+              <span key={i} className="inline mr-3">
+                {habitItem.completedDates.has(item) ? (
+                  <FaCheck className="inline" />
+                ) : (
+                  <FaRegCircle className="inline" />
+                )}
               </span>
             ))}
             <div className="flex items-center">
-              <h5 className="m-2 text-2xl font-200 tracking-tight text-gray-900 dark:text-white">
+              <h5 className="m-2 w-4/5 text-2xl font-200 tracking-tight text-gray-900 dark:text-white">
                 {habitItem.name}
               </h5>
               <button onClick={() => deleteHabit(habitItem.id)}>
-                <FcEmptyTrash />
+                <FcEmptyTrash className="text-xl"/>
               </button>
             </div>
           </div>
