@@ -11,7 +11,7 @@ function TodaysHabits() {
 
     const currentDate = new Date().toISOString().split('T')[0];
 
-    if (updatedHabit.completedDates.has(currentDate)) {
+    if (Array.from(updatedHabit.completedDates).includes(currentDate)) {
       updatedHabit.completedDates.delete(currentDate);
     } else {
       updatedHabit.completedDates.add(currentDate);
@@ -31,11 +31,11 @@ function TodaysHabits() {
               type="checkbox"
               name={habit.name}
               id={habit.id}
-              checked={habit.completedDates.has(new Date().toISOString().split('T')[0])}
+              checked={Array.from(habit.completedDates).includes(new Date().toISOString().split('T')[0])}
               onChange={() => handleCheckboxChange(habit.id)}
               className="mr-2"
             />
-            <span className={habit.completedDates.has(new Date().toISOString().split('T')[0]) ? 'line-through text-gray-500' : 'text-black'}>
+            <span className={Array.from(habit.completedDates).includes(new Date().toISOString().split('T')[0]) ? 'line-through text-gray-500' : 'text-black'}>
               {habit.name}
             </span>
           </li>

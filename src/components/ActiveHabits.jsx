@@ -31,7 +31,7 @@ function ActiveHabits() {
             <p className="inline mr-20">{completedPercentage.toFixed(2)}%</p>
             {dateArray.map((item, i) => (
               <span key={i} className="inline mr-3">
-                {habitItem.completedDates.has(item) ? (
+                {habitItem.completedDates instanceof Set && habitItem.completedDates.has(item) ? (
                   <FaCheck className="inline" />
                 ) : (
                   <FaRegCircle className="inline" />
@@ -43,7 +43,7 @@ function ActiveHabits() {
                 {habitItem.name}
               </h5>
               <button onClick={() => deleteHabit(habitItem.id)}>
-                <FcEmptyTrash className="text-xl"/>
+                <FcEmptyTrash className="text-xl" />
               </button>
             </div>
           </div>

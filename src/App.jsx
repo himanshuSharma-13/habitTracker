@@ -6,11 +6,17 @@ import { HabitProvider } from "./contexts/HabitContext";
 
 function App() {
   // const { habits } = useHabit(); // array
-  const [ habits, setHabits ] = useState([]); // array
+  const [ habits, setHabits ] = useState([]); 
   
   const addHabit = (habit) => {
-    console.log(habit);
-    setHabits((prev) => [{id: Date.now(), ...habit}, ...prev] )
+    setHabits((prev) => [
+      {
+        id: Date.now(),
+        ...habit,
+        completedDates: new Set(), // Ensure completedDates is a Set
+      },
+      ...prev,
+    ]);  
   }
 
   const updateHabit = (id, habit) => {
@@ -30,9 +36,12 @@ function App() {
   }, [])
 
   useEffect(() => {
-    localStorage.setItem("habits", JSON.stringify(habits))
+    if (habits && habits.length > 0) {
+      localStorage.setItem("habits", JSON.stringify(habits))
+    }
   }, [habits])
   
+ 
   return (
     <>
       <HabitProvider value={{habits, addHabit, updateHabit, deleteHabit}}>
